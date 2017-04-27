@@ -6,7 +6,8 @@
 	<groupId>com.github.manosbatsis</groupId>
 	<artifactId>spring-bactrian</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
+
 
 	<description>Effortless Spring-based abstraction of Apache Camel endpoints.</description>
 
@@ -22,6 +23,10 @@
 		<skip.starting.camel.context>false</skip.starting.camel.context>
 	</properties>
 
+	<modules>
+		<module>spring-bactrian-common</module>
+		<module>spring-bactrian-sample-geocoder</module>
+	</modules>
 
 	<!-- Spring-Boot and Camel BOM -->
 	<dependencyManagement>
@@ -44,6 +49,7 @@
 	</dependencyManagement>
 
 	<dependencies>
+
 		<!-- Spring Boot -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -57,21 +63,20 @@
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-jackson-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-geocoder-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-swagger-java</artifactId>
+			<artifactId>camel-swagger-java-starter</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-servlet</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-jackson</artifactId>
-		</dependency>
-
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -92,24 +97,6 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${spring-boot.version}</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 
 
 </project>

@@ -14,7 +14,8 @@ import org.springframework.beans.factory.config.AbstractFactoryBean;
  *
  * See also <a href="http://camel.apache.org/using-camelproxy.html">CamelProxy</a>.
  *
- * @param <I> the target interface for the  proxy service
+ * @param <I> the target interface for the  proxy service. You can define your own or just reuse {@link CamelProxyAsyncService} / {@link CamelProxyAsyncService},(available as a convenience)
+ *
  *
  */
 @Slf4j
