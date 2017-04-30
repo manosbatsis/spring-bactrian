@@ -1,9 +1,7 @@
-package com.github.manosbatsis.spring.bactrian.test.geocoder;
+package com.restdude.spring.bactrian.test.geocoder.beans;
 
 import com.google.code.geocoder.model.GeocodeResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.camel.CamelContext;
-import org.apache.camel.ProducerTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,9 +18,9 @@ public class GeocoderController {
 
 
     @Autowired
-    GeocoderCamelProxyService geocoderCamelProxyService;
+    AddressLookupService geocoderCamelProxyService;
 
-    @RequestMapping(path = "/lookup", method = RequestMethod.GET,  consumes = "application/json", produces = "application/json")
+    @RequestMapping(path = "/lookup", method = RequestMethod.GET, produces = "application/json")
     public GeocodeResponse lookup(@RequestParam("address") String address) {
         log.debug("CamelController, address: {}, proxy service: {}", address, this.geocoderCamelProxyService);
         //producerTemplate.sendBody("direct:firstRoute", "Calling via Spring Boot Rest Controller");

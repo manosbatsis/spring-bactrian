@@ -1,18 +1,13 @@
-package com.github.manosbatsis.spring.bactrian.service;
+package com.restdude.spring.bactrian.service;
 
 import org.apache.camel.Body;
 import org.apache.camel.Headers;
 
 import java.util.Map;
-import java.util.concurrent.Future;
 
 /**
  *
- * Sample but also reusable target interface for generated service beans based on CamelProxy.
- *  *
- * This interface is convenient but there is nothing special about it. Any regular interface may be used.
- *
- * @see CamelProxyAsyncService
+ * Base service interface for <i>internal use only</i>
  *
  * @param <IN> the  output result type
  * @param <OUT> the message input type

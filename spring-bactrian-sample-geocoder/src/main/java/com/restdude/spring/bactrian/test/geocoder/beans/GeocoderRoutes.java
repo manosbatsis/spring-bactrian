@@ -1,4 +1,4 @@
-package com.github.manosbatsis.spring.bactrian.test.geocoder;
+package com.restdude.spring.bactrian.test.geocoder.beans;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.Exchange;
@@ -46,7 +46,7 @@ public class GeocoderRoutes extends RouteBuilder {
 
                         Message in = exchange.getIn();
                         for (String key : in.getHeaders().keySet()) {
-                            log.debug("configure, in header name: {}, value: {}", key, in.getHeaders().get(key));
+                            log.debug("configure, in header name: {}, mapping: {}", key, in.getHeaders().get(key));
                         }
                     }
                 })

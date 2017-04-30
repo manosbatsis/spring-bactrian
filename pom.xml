@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.manosbatsis</groupId>
-	<artifactId>spring-bactrian</artifactId>
+	<groupId>com.restdude</groupId>
+	<artifactId>spring-bactrian-pom</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
@@ -12,6 +12,7 @@
 	<description>Effortless Spring-based abstraction of Apache Camel endpoints.</description>
 
 	<properties>
+
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 
@@ -21,10 +22,11 @@
 		<camel.version>2.18.3</camel.version>
 		<spring-boot.version>1.5.3.RELEASE</spring-boot.version>
 		<skip.starting.camel.context>false</skip.starting.camel.context>
+
 	</properties>
 
 	<modules>
-		<module>spring-bactrian-common</module>
+		<module>spring-bactrian-core</module>
 		<module>spring-bactrian-sample-geocoder</module>
 	</modules>
 
@@ -93,6 +95,14 @@
 			<groupId>org.apache.camel</groupId>
 			<artifactId>camel-swagger-java-starter</artifactId>
 		</dependency>
+
+		<!-- commons -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.5</version>
+		</dependency>
+
 		<!-- lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
