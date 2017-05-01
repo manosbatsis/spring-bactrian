@@ -1,4 +1,4 @@
-package com.restdude.spring.bactrian.test.geocoder.beans;
+package com.restdude.spring.bactrian.test.geocoder.springsample;
 
 import com.google.code.geocoder.model.GeocodeResponse;
 import lombok.extern.slf4j.Slf4j;

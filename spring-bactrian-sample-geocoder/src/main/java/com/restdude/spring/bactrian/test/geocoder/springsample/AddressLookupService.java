@@ -1,11 +1,11 @@
-package com.restdude.spring.bactrian.test.geocoder.beans;
+package com.restdude.spring.bactrian.test.geocoder.springsample;
 
 import com.google.code.geocoder.model.GeocodeResponse;
 import com.restdude.spring.bactrian.annotation.CamelProxyMapping;
 import com.restdude.spring.bactrian.service.CamelService;
 import org.apache.camel.Endpoint;
 
-import static com.restdude.spring.bactrian.test.geocoder.beans.GeocoderRoutes.DIRECT_GEOCODER;
+import static com.restdude.spring.bactrian.test.geocoder.config.GeocoderRoutes.DIRECT_GEOCODER;
 
 /**
  * A sample interface used to generate Spring Service bean for

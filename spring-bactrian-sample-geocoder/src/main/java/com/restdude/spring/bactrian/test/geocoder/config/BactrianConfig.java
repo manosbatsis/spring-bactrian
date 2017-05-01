@@ -10,7 +10,7 @@ import org.springframework.integration.channel.PublishSubscribeChannel;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 
-import static com.restdude.spring.bactrian.test.geocoder.beans.GeocoderRoutes.DIRECT_GEOCODER;
+import static com.restdude.spring.bactrian.test.geocoder.config.GeocoderRoutes.DIRECT_GEOCODER;
 
 /**
  * Created by manos on 1/5/2017.
