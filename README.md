@@ -1,19 +1,27 @@
 # Spring Bactrian
 
-Effortless Spring abstractions for your Apache Camel endpoints.
+Effortless Spring (Integration) abstractions for your Apache Camel endpoints.
 
-## Work in progress. 
+##. 
 
 I have only spend a few hours on this while checking out Camel and Spring Integration so consider 
 this a sandbox.
 
-The idea is to reduce the effort required for integrating Camel endpoints with your regular 
-code to just creating an interface. In other words, similarly to how you would typically create 
-a Repository, only getting a Spring or Spring Integration component instead. 
+The idea is to minimise the effort required for abstracting Camel endpoints under regular 
+Spring beans or Spring Integration EIPs down to creating an  interface. This should feel familiar if, for 
+example, you are used to using a simple interface to create a Spting Repository or other component. Bactrian 
+provides the same convenience, only providing you with a Spring service-like bean or Spring Integration component instead. 
 
-The current POC is just a FactoryBean that builds CamelProxy-based Spring Service beans, but I 
-intent to add generation of Spring Integration components (probably outbound gateways) and 
-automation plumbing based on annotations and a simple post processor. 
 
-At this point I am only targeting endpoints within the runtime JVM but Camel's Spring remoting support might 
-be used later on.
+
+##  Work in Progress
+
+The current POC is builds on CamelProxy to generate components for a Camel endpoint URI or route id. At the moment 
+generation only covers regular Spring service and Spring Integration outbound gateway components.
+
+- Add support for multiple (i.e. method-level) endpoint mapping annotations per interface via javaassist
+- Add more alternatives for component generation (VS CamelProxy):
+    - Runtime-created bean classes for accessing "local" endpoints using regular Java API via javaassist
+    - Refactore to backing plugins to allow third party/custom implementations e.g. meta-annotations and impl on top of byte buddy, AMQP or whatever
+- Enhance and document support for mappers, converters, conversion service, errorh handling etc.
+- Provide coverage of more EIPs

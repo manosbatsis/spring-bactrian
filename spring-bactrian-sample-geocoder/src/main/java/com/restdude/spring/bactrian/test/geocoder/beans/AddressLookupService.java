@@ -1,16 +1,18 @@
 package com.restdude.spring.bactrian.test.geocoder.beans;
 
-import com.restdude.spring.bactrian.annotation.CamelEndpointMapping;
-import com.restdude.spring.bactrian.service.OutboundGatewayService;
 import com.google.code.geocoder.model.GeocodeResponse;
+import com.restdude.spring.bactrian.annotation.CamelProxyMapping;
+import com.restdude.spring.bactrian.service.CamelService;
 import org.apache.camel.Endpoint;
+
+import static com.restdude.spring.bactrian.test.geocoder.beans.GeocoderRoutes.DIRECT_GEOCODER;
 
 /**
  * A sample interface used to generate Spring Service bean for
  * simplified access to a Camel {@link Endpoint} and the Geocoder component
  *
  */
-@CamelEndpointMapping(value = "addressLookupService", mapping = "direct:geocoder")
-public interface AddressLookupService extends OutboundGatewayService<String, GeocodeResponse> {
+@CamelProxyMapping(value = "addressLookupService", mapping = DIRECT_GEOCODER)
+public interface AddressLookupService extends CamelService<String, GeocodeResponse> {
 
 }
