@@ -80,8 +80,8 @@ Add a backing CamelProxy-based gateway:
 public MessageHandler geocoderOutboundGateway() {
     CamelProxyOutboundGateway gw = new CamelProxyOutboundGateway();
     gw.setOutputChannelName(CHANNEL_RESPONSE);
-    gw.setMapping(DIRECT_GEOCODER);
-
+    // camel route
+    gw.setMapping("direct:geocode");
     return gw;
 }
 ```
