@@ -1,13 +1,33 @@
 # Spring Bactrian
 
+[![Build Status](https://travis-ci.org/manosbatsis/spring-bactrian.svg?branch=master)](https://travis-ci.org/manosbatsis/spring-bactrian) 
+
 Effortless Spring (Integration) abstractions for your Apache Camel endpoints.
 
-##. What?
+<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-The idea is to minimise the effort required for abstracting Camel endpoints under regular 
-Spring beans or Spring Integration EIPs down to creating an  interface. This should feel familiar if, for 
-example, you are used to using a simple interface to create a Spting Repository or other component. Bactrian 
-provides the same convenience, only providing you with a Spring service-like bean or Spring Integration component instead. 
+- [What?](#what)
+- [Why?](#why)
+- [Examples](#examples)
+	- [Spring Service](#spring-service)
+	- [Spring Integration Outbound Gateway](#spring-integration-outbound-gateway)
+		- [Auto mode](#auto-mode)
+		- [Manual mode](#manual-mode)
+- [Work in Progress](#work-in-progress)
+
+<!-- /TOC -->
+
+## What?
+
+Minimise the effort required for abstracting Camel endpoints under regular
+Spring beans or Spring Integration EIPs down to creating an  interface. This should feel familiar if, for
+example, you are used to using a simple interface to create a Spting Repository or other component. Bactrian
+provides the same convenience, only providing you with a Spring service-like bean or Spring Integration component instead.
+
+## Why?
+
+I was asked to provide a code sample using geocoder, Camel and Spring Integration. Since I had no real experience with any of it,
+trying to integrate a bit helped me learn a few things.
 
 ## Examples
 
@@ -15,7 +35,7 @@ Some examples are provided bellow. See also the samples in the spring-bactrian-s
 
 ### Spring Service
 
-The interface bellow creates a Spring Component that abstracts a `direct:geocoder` Camel route behind a simple 
+The interface bellow creates a Spring Component that abstracts a `direct:geocoder` Camel route behind a simple
 Java method call (`CamelService#invoke()`).
 
 ```java
@@ -26,16 +46,16 @@ Java method call (`CamelService#invoke()`).
  */
 @CamelProxyMapping(value = "addressLookupService", mapping = "direct:geocode")
 public interface AddressLookupService extends CamelService<String, GeocodeResponse> {
-    // no need to put anything here, clients just use the super interface method 
+    // no need to put anything here, clients just use the super interface method
 }
 
 ```
 
 ### Spring Integration Outbound Gateway
 
-#### Ayto mode
+#### Auto mode
 
-Just use `CamelProxyMessagingGateway```
+Just use `CamelProxyMessagingGateway`
 
 #### Manual mode
 
@@ -70,7 +90,7 @@ public MessageHandler geocoderOutboundGateway() {
 
 ##  Work in Progress
 
-The current POC is builds on CamelProxy to generate components for a Camel endpoint URI or route id. At the moment 
+The current POC is builds on CamelProxy to generate components for a Camel endpoint URI or route id. At the moment
 generation only covers regular Spring service and Spring Integration outbound gateway components.
 
 - Make this more solid and documented (generic types, tests with sync/async...)
