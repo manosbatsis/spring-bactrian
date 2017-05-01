@@ -1,6 +1,6 @@
 package com.restdude.spring.bactrian.test.geocoder.config;
 
-import com.restdude.spring.bactrian.factory.support.CamelProxyOutboundGateway;
+import com.restdude.spring.bactrian.CamelProxyOutboundGateway;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Description;

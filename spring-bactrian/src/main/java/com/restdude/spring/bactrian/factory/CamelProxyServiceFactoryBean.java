@@ -1,7 +1,7 @@
 package com.restdude.spring.bactrian.factory;
 
+import com.restdude.spring.bactrian.CamelService;
 import com.restdude.spring.bactrian.annotation.CamelProxyMapping;
-import com.restdude.spring.bactrian.service.CamelService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.CamelContext;

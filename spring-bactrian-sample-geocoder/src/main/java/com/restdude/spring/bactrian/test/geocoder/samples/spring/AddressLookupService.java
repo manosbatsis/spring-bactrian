@@ -1,8 +1,8 @@
-package com.restdude.spring.bactrian.test.geocoder.springsample;
+package com.restdude.spring.bactrian.test.geocoder.samples.spring;
 
 import com.google.code.geocoder.model.GeocodeResponse;
+import com.restdude.spring.bactrian.CamelService;
 import com.restdude.spring.bactrian.annotation.CamelProxyMapping;
-import com.restdude.spring.bactrian.service.CamelService;
 import org.apache.camel.Endpoint;
 
 import static com.restdude.spring.bactrian.test.geocoder.config.GeocoderRoutes.DIRECT_GEOCODER;

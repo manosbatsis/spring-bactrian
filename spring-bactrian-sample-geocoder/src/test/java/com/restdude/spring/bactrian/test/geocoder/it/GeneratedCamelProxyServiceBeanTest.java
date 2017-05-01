@@ -1,6 +1,6 @@
 package com.restdude.spring.bactrian.test.geocoder.it;
 
-import com.restdude.spring.bactrian.test.geocoder.springsample.AddressLookupService;
+import com.restdude.spring.bactrian.test.geocoder.samples.spring.AddressLookupService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.CamelContext;
 import org.assertj.core.api.Assertions;

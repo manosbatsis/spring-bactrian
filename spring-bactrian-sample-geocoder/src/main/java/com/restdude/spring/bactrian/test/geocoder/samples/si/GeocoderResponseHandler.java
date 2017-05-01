@@ -1,4 +1,4 @@
-package com.restdude.spring.bactrian.test.geocoder.beans;
+package com.restdude.spring.bactrian.test.geocoder.samples.si;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.integration.annotation.ServiceActivator;

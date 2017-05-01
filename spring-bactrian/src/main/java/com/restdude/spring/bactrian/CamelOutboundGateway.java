@@ -1,4 +1,4 @@
-package com.restdude.spring.bactrian.service;
+package com.restdude.spring.bactrian;
 
 import com.restdude.spring.bactrian.annotation.CamelProxyMapping;
 import org.springframework.messaging.MessageHandler;

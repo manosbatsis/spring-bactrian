@@ -1,7 +1,5 @@
-package com.restdude.spring.bactrian.factory.support;
+package com.restdude.spring.bactrian;
 
-import com.restdude.spring.bactrian.service.CamelOutboundGateway;
-import com.restdude.spring.bactrian.service.CamelService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.ProxyBuilder;
@@ -15,7 +13,20 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 /**
- * Base class used to generate implementations of {@link CamelProxyOutboundGateway )
+ * Base class used as a backing outbound gateway implementations of {@link CamelProxyOutboundGateway),
+ * but can also be used manually, for example:
+ *
+ * <pre>
+ * {@code
+ * @Bean
+ * @ServiceActivator(inputChannel = CHANNEL_INVOCATION)
+ * public MessageHandler geocoderOutboundGateway() {
+ *     CamelProxyOutboundGateway gw = new CamelProxyOutboundGateway();
+ *     gw.setOutputChannelName(CHANNEL_RESPONSE);
+ *     gw.setMapping(DIRECT_GEOCODER);
+ *     return gw;
+ * }
+ * </pre>
  */
 @Slf4j
 public class CamelProxyOutboundGateway/*<IN extends Object, OUT extends Object, D extends CamelProxyService<IN, OUT>>*/
@@ -55,7 +66,6 @@ public class CamelProxyOutboundGateway/*<IN extends Object, OUT extends Object, 
      */
     @Override
     protected Object handleRequestMessage(Message<?> requestMessage) {
-        log.debug("handleRequestMessage IN: ====================================== {} =========================================", requestMessage);
         boolean input = requestMessage != null;
 
         // use payload as the body, if any
@@ -78,7 +88,6 @@ public class CamelProxyOutboundGateway/*<IN extends Object, OUT extends Object, 
         // might be important in async usecases
         body = this.delegate.invoke(body, headers);
         Message responseMessage = MessageBuilder.createMessage(body, origHeaders);
-        log.debug("handleRequestMessage OUT: ====================================== {} =========================================", responseMessage);
         return responseMessage;
     }
 }

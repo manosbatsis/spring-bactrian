@@ -1,32 +1,12 @@
-/**
- * Restdude
- * -------------------------------------------------------------------
- * <p>
- * Copyright © 2005 Manos Batsis (manosbatsis gmail)
- * <p>
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * <p>
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Lesser General Public License for more details.
- * <p>
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
 package com.restdude.spring.bactrian.factory;
 
 import com.restdude.mdd.util.CreateClassCommand;
 import com.restdude.mdd.util.CreateMethodCommand;
 import com.restdude.mdd.util.JavassistBaseUtil;
+import com.restdude.spring.bactrian.CamelProxyOutboundGateway;
+import com.restdude.spring.bactrian.CamelService;
 import com.restdude.spring.bactrian.annotation.CamelMapping;
 import com.restdude.spring.bactrian.annotation.CamelProxyMapping;
-import com.restdude.spring.bactrian.factory.support.CamelProxyOutboundGateway;
-import com.restdude.spring.bactrian.factory.support.CamelProxyServiceLocator;
-import com.restdude.spring.bactrian.service.CamelService;
 import javassist.CannotCompileException;
 import javassist.CtClass;
 import lombok.extern.slf4j.Slf4j;
@@ -93,15 +73,19 @@ public class CamelEndpointMappingsPostProcessor implements BeanDefinitionRegistr
         this.registerServiceFactories(registry);
 
         // create camel proxy messaging gateways
-        //this.registerMessagingGatewayss(registry);
+        this.registerMessagingGatewayss(registry);
 
-        AbstractBeanDefinition def = BeanDefinitionBuilder.rootBeanDefinition(CamelProxyServiceLocator.class)
-                .addPropertyValue("mappingBeanNames", mappingBeanNames)
-                .setLazyInit(true).getBeanDefinition();
-        registry.registerBeanDefinition(this.generator.generateBeanName(def, registry), def);
 
     }
 
+    /**
+     * Create and register Spring Service BeanDefinition for resolved {@link CamelProxyMapping}s.
+     * The BeanDefinitions are basically {@link org.springframework.beans.factory.BeanFactory}s
+     * that create CamelProxy beans.
+     *
+     * @param registry
+     * @throws BeansException
+     */
     public void registerServiceFactories(BeanDefinitionRegistry registry) throws BeansException {
         log.debug("Register Service Bean Factories...");
 
@@ -144,6 +128,15 @@ public class CamelEndpointMappingsPostProcessor implements BeanDefinitionRegistr
         }
     }
 
+
+    /**
+     * Create and register Spring Integration BeanDefinition for resolved {@link CamelProxyMapping}s.
+     * The BeanDefinitions are basically {@link org.springframework.beans.factory.BeanFactory}s
+     * that create CamelProxy beans.
+     *
+     * @param registry
+     * @throws BeansException
+     */
     private void registerMessagingGatewayss(BeanDefinitionRegistry registry) {
 
         for (String mapping : this.bucketCamelMessagingGateways.keySet()) {

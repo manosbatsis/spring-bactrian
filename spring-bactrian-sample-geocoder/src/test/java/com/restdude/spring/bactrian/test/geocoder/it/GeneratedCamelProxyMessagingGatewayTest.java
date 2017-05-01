@@ -1,6 +1,6 @@
 package com.restdude.spring.bactrian.test.geocoder.it;
 
-import com.restdude.spring.bactrian.test.geocoder.beans.GeocoderMessagingGatewayService;
+import com.restdude.spring.bactrian.test.geocoder.samples.si.GeocoderMessagingGatewayService;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
