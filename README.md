@@ -33,6 +33,42 @@ trying to integrate a bit helped me learn a few things.
 
 Some examples are provided bellow. See also the samples in the spring-bactrian-sample-geocoder module.
 
+### Install
+
+Add the Sonatype snapshots repo to your pom:
+
+```xml
+<repositories>
+    <!-- ... -->
+    <repository>
+        <id>sonatypeSnapshots</id>
+        <name>Sonatype Snapshots</name>
+        <releases>
+            <enabled>false</enabled>
+        </releases>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+        <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </repository>
+    <!-- ... -->
+</repositories>
+```
+
+Add Spring Bactrian as a dependency:
+
+```xml
+<dependencies>
+    <!-- ... -->
+    <dependency>
+        <groupId>com.restdude</groupId>
+        <artifactId>spring-bactrian</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <!-- ... -->
+</dependencies>
+```
+
 ### Spring Service
 
 The interface bellow creates a Spring Component that abstracts a `direct:geocoder` Camel route behind a simple
