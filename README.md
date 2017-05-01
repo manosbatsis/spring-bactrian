@@ -88,10 +88,12 @@ public MessageHandler geocoderOutboundGateway() {
 
 
 
-##  Work in Progress
+## Work in Progress
 
-The current POC is builds on CamelProxy to generate components for a Camel endpoint URI or route id. At the moment
+This is currently just a POC using CamelProxy to integrate with a Camel endpoint URI or route id. At the moment
 generation only covers regular Spring service and Spring Integration outbound gateway components.
+
+TODO: 
 
 - Make this more solid and documented (generic types, tests with sync/async...)
 - Add support for multiple (i.e. method-level) endpoint mapping annotations per interface via javaassist
