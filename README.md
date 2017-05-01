@@ -11,6 +11,8 @@ provides the same convenience, only providing you with a Spring service-like bea
 
 ## Examples
 
+Some examples are provided bellow. See also the samples in the spring-bactrian-sample-geocoder module.
+
 ### Spring Service
 
 The interface bellow creates a Spring Component that abstracts a `direct:geocoder` Camel route behind a simple 
@@ -29,14 +31,52 @@ public interface AddressLookupService extends CamelService<String, GeocodeRespon
 
 ```
 
+### Spring Integration Outbound Gateway
+
+#### Ayto mode
+
+Just use `CamelProxyMessagingGateway```
+
+#### Manual mode
+
+If you are going manual you probably want to check the complete example in the spring-bactrian-sample-geocoder module.
+
+
+Create an SI messaging gateway:
+
+```java
+@MessagingGateway(name = "entryGateway", defaultRequestChannel = CHANNEL_REQUEST)
+public interface GeocoderMessagingGatewayService {
+
+    Message lookup(Message message);
+}
+```
+
+Add a backing CamelProxy-based gateway:
+
+```java
+@Bean
+@ServiceActivator(inputChannel = CHANNEL_INVOCATION)
+public MessageHandler geocoderOutboundGateway() {
+    CamelProxyOutboundGateway gw = new CamelProxyOutboundGateway();
+    gw.setOutputChannelName(CHANNEL_RESPONSE);
+    gw.setMapping(DIRECT_GEOCODER);
+
+    return gw;
+}
+```
+
+
+
 ##  Work in Progress
 
 The current POC is builds on CamelProxy to generate components for a Camel endpoint URI or route id. At the moment 
 generation only covers regular Spring service and Spring Integration outbound gateway components.
 
+- Make this more solid and documented (generic types, tests with sync/async...)
 - Add support for multiple (i.e. method-level) endpoint mapping annotations per interface via javaassist
 - Add more alternatives for component generation (VS CamelProxy):
-    - Runtime-created bean classes for accessing "local" endpoints using regular Java API via javaassist
+    - Runtime-created bean classes for accessing "local" endpoints using regular Java API (message template or DSL retc) via javaassist/bytebuddy
     - Refactore to backing plugins to allow third party/custom implementations e.g. meta-annotations and impl on top of byte buddy, AMQP or whatever
 - Enhance and document support for mappers, converters, conversion service, errorh handling etc.
 - Provide coverage of more EIPs
