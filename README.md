@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/manosbatsis/spring-bactrian.svg?branch=master)](https://travis-ci.org/manosbatsis/spring-bactrian)
 
-Effortless Spring (Integration) abstractions for your Apache Camel endpoints.
+Effortless Spring (Integration) abstractions for your Apache Camel endpoints. The project name refers to the [Bactrian camel](https://en.wikipedia.org/wiki/Bactrian_camel) (Camelus bactrianus).
 
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
