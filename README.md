@@ -1,6 +1,6 @@
 # Spring Bactrian
 
-[![Build Status](https://travis-ci.org/manosbatsis/spring-bactrian.svg?branch=master)](https://travis-ci.org/manosbatsis/spring-bactrian) 
+[![Build Status](https://travis-ci.org/manosbatsis/spring-bactrian.svg?branch=master)](https://travis-ci.org/manosbatsis/spring-bactrian)
 
 Effortless Spring (Integration) abstractions for your Apache Camel endpoints.
 
@@ -9,10 +9,14 @@ Effortless Spring (Integration) abstractions for your Apache Camel endpoints.
 - [What?](#what)
 - [Why?](#why)
 - [Examples](#examples)
+	- [Install](#install)
 	- [Spring Service](#spring-service)
 	- [Spring Integration Outbound Gateway](#spring-integration-outbound-gateway)
 		- [Auto mode](#auto-mode)
 		- [Manual mode](#manual-mode)
+	- [Sample Geocoder App](#sample-geocoder-app)
+		- [Checkout and Build](#checkout-and-build)
+		- [Project Structure](#project-structure)
 - [Work in Progress](#work-in-progress)
 
 <!-- /TOC -->
@@ -31,7 +35,7 @@ trying to integrate a bit helped me learn a few things.
 
 ## Examples
 
-Some examples are provided bellow. See also the samples in the spring-bactrian-sample-geocoder module.
+Some examples are provided bellow. See also the samples geocoder app.
 
 ### Install
 
@@ -123,13 +127,65 @@ public MessageHandler geocoderOutboundGateway() {
 ```
 
 
+### Sample Geocoder App
+
+#### Checkout and Build
+
+*Requires: Java 8 (OpenJDK is just fine), Apache Maven 3.3.9.*
+
+The `spring-bactrian-sample-geocoder` module contains a Spring-Boot app with the examples a nd some integration tests.
+If you want to have a look go ahead andclone the project:
+
+```
+git clone https://github.com/manosbatsis/spring-bactrian.git
+```
+
+Navigate to the project dir:
+
+```
+cd spring-bactrian/
+```
+
+Builting will compile, package, run tests and install in your local Maven repo:
+
+```
+mvn clean install
+```
+
+#### Project Structure
+
+The project follows a typicall Maven structure. Here's  a quick overview sample app directory structuree:
+
+```
+spring-bactrian: The root folder, i.e. the POM module
+├── spring-bactrian:                                        The main artifact module
+└── spring-bactrian-sample-geocoder:                        The geocoder sample app
+    ├── src
+    │   ├── main/
+    │   │   ├── java
+    │   │   │   └── com
+    │   │   │       └── restdude
+    │   │   │           └── spring
+    │   │   │               └── bactrian
+    │   │   │                   └── test
+    │   │   │                       └── geocoder
+    │   │   │                           ├── config:         Configuration classes
+    │   │   │                           └── samples
+    │   │   │                               ├── si:         Spring Integration sample classes
+    │   │   │                               └── spring:     Plain Spring samples
+    │   │   └── resources
+    │   │       └── application.properties:                 Application config (mostly logging levels)
+    │   └── test:                                           (Integration) Test classes
+```
 
 ## Work in Progress
 
 This is currently just a POC using CamelProxy to integrate with a Camel endpoint URI or route id. At the moment
 generation only covers regular Spring service and Spring Integration outbound gateway components.
 
-TODO: 
+Submission of bug reports or other issues is welcome.
+
+TODO List
 
 - Make this more solid and documented (generic types, tests with sync/async...)
 - Add support for multiple (i.e. method-level) endpoint mapping annotations per interface via javaassist
